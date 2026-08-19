@@ -3,7 +3,7 @@ from brain import OllamaBrain
 from agent import Agent
 
 
-GAME_FILE = "games/tiny_game.z8"
+GAME_FILE = "games/manor_mystery.z8"
 
 
 def main():
