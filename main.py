@@ -16,7 +16,7 @@ def main():
     agent = Agent(
         brain=brain,
         environment=environment,
-        max_steps=10,
+        max_steps=100,
     )
 
     try:
