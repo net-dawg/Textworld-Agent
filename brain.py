@@ -1,3 +1,5 @@
+import json
+
 import requests
 
 
@@ -14,6 +16,32 @@ class OllamaBrain:
                 "prompt": prompt,
                 "stream": False,
                 "think": False,
+                "format": {
+                    "type": "object",
+                    "properties": {
+                        "assessment": {"type": "string"},
+                        "subgoal_status": {
+                            "type": "string",
+                            "enum": ["continue", "complete", "blocked", "replace"],
+                        },
+                        "subgoal": {"type": "string"},
+                        "success_condition": {"type": "string"},
+                        "memory_update": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                        },
+                        "action": {"type": "string"},
+                    },
+                    "required": [
+                        "assessment",
+                        "subgoal_status",
+                        "subgoal",
+                        "success_condition",
+                        "memory_update",
+                        "action",
+                    ],
+                    "additionalProperties": False,
+                },
             },
             timeout=120,
         )
@@ -21,5 +49,25 @@ class OllamaBrain:
         response.raise_for_status()
 
         data = response.json()
+        decision = json.loads(data["response"])
 
-        return data["response"].strip()
+        text_fields = ["assessment", "subgoal", "success_condition", "action"]
+
+        for field in text_fields:
+            decision[field] = decision.get(field, "").strip()
+
+        if any(not decision[field] for field in text_fields):
+            raise ValueError("Model returned an incomplete ReAct decision.")
+
+        return {
+            "assessment": decision["assessment"],
+            "subgoal_status": decision["subgoal_status"],
+            "subgoal": decision["subgoal"],
+            "success_condition": decision["success_condition"],
+            "memory_update": [
+                fact.strip()
+                for fact in decision.get("memory_update", [])
+                if fact.strip()
+            ],
+            "action": decision["action"],
+        }
