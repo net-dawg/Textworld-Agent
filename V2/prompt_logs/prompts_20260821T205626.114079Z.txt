@@ -1,0 +1,2318 @@
+TEXTWORLD AGENT — EXACT MODEL PROMPTS
+Run started: 2026-08-21T20:56:26.114079+00:00
+
+
+================================================================================
+MODEL PROMPT 1
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Great Hall
+Description: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+Inventory: You are carrying nothing.
+Last result: No action has been taken yet.
+Score: 0
+Moves: 0
+
+VERIFIED MEMORY:
+Visited: Great Hall
+
+Known routes:
+- None
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- None
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close ceremonial plinth
+- examine carved oak door
+- examine ceremonial plinth
+- examine iron workshop door
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 2
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Library
+Description: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+Inventory: You are carrying nothing.
+Last result: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+Score: 0
+Moves: 1
+
+VERIFIED MEMORY:
+Visited: Great Hall, Library
+
+Known routes:
+- Great Hall --go west--> Library
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. open writing desk
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- examine faded journal
+- examine low bookshelf
+- examine writing desk
+- go east
+- inventory
+- look
+- take faded journal from low bookshelf
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 3
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Library
+Description: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+Inventory: You are carrying nothing.
+Last result: You open the writing desk, revealing a brass key.
+Score: 0
+Moves: 2
+
+VERIFIED MEMORY:
+Visited: Great Hall, Library
+
+Known routes:
+- Great Hall --go west--> Library
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+- open writing desk => world changed: You open the writing desk, revealing a brass key.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. take brass key from writing desk
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close writing desk
+- examine brass key
+- examine faded journal
+- examine low bookshelf
+- examine writing desk
+- go east
+- inventory
+- look
+- take faded journal from low bookshelf
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 4
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Library
+Description: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+Inventory: You are carrying: a brass key.
+Last result: You take the brass key from the writing desk.
+Score: 0
+Moves: 3
+
+VERIFIED MEMORY:
+Visited: Great Hall, Library
+
+Known routes:
+- Great Hall --go west--> Library
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+- open writing desk => world changed: You open the writing desk, revealing a brass key.
+- take brass key from writing desk => world changed: You take the brass key from the writing desk.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close writing desk
+- drop brass key
+- examine brass key
+- examine faded journal
+- examine low bookshelf
+- examine writing desk
+- insert brass key into writing desk
+- inventory
+- look
+- put brass key on low bookshelf
+- take faded journal from low bookshelf
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 5
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Great Hall
+Description: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+Inventory: You are carrying: a brass key.
+Last result: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+Score: 0
+Moves: 4
+
+VERIFIED MEMORY:
+Visited: Great Hall, Library
+
+Known routes:
+- Great Hall --go west--> Library
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+- open writing desk => world changed: You open the writing desk, revealing a brass key.
+- take brass key from writing desk => world changed: You take the brass key from the writing desk.
+- go east => location changed: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. unlock carved oak door with brass key
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close ceremonial plinth
+- drop brass key
+- examine brass key
+- examine carved oak door
+- examine ceremonial plinth
+- examine iron workshop door
+- go west
+- insert brass key into ceremonial plinth
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 6
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Great Hall
+Description: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+Inventory: You are carrying: a brass key.
+Last result: You unlock carved oak door.
+Score: 0
+Moves: 5
+
+VERIFIED MEMORY:
+Visited: Great Hall, Library
+
+Known routes:
+- Great Hall --go west--> Library
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+- open writing desk => world changed: You open the writing desk, revealing a brass key.
+- take brass key from writing desk => world changed: You take the brass key from the writing desk.
+- go east => location changed: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+- unlock carved oak door with brass key => world changed: You unlock carved oak door.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. open carved oak door
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close ceremonial plinth
+- drop brass key
+- examine brass key
+- examine carved oak door
+- examine ceremonial plinth
+- examine iron workshop door
+- go west
+- insert brass key into ceremonial plinth
+- inventory
+- lock carved oak door with brass key
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 7
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Great Hall
+Description: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+Inventory: You are carrying: a brass key.
+Last result: You open carved oak door.
+Score: 0
+Moves: 6
+
+VERIFIED MEMORY:
+Visited: Great Hall, Library
+
+Known routes:
+- Great Hall --go west--> Library
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Library =-
+Tall shelves lean beneath the weight of forgotten books. A writing desk sits in an alcove under the western window.
+- open writing desk => world changed: You open the writing desk, revealing a brass key.
+- take brass key from writing desk => world changed: You take the brass key from the writing desk.
+- go east => location changed: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+- unlock carved oak door with brass key => world changed: You unlock carved oak door.
+- open carved oak door => world changed: You open carved oak door.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go north
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- close ceremonial plinth
+- drop brass key
+- examine brass key
+- examine carved oak door
+- examine ceremonial plinth
+- examine iron workshop door
+- go west
+- insert brass key into ceremonial plinth
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 8
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 7
+
+VERIFIED MEMORY:
+Visited: Great Hall, Launderette, Library
+
+Known routes:
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- open writing desk => world changed: You open the writing desk, revealing a brass key.
+- take brass key from writing desk => world changed: You take the brass key from the writing desk.
+- go east => location changed: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+- unlock carved oak door with brass key => world changed: You unlock carved oak door.
+- open carved oak door => world changed: You open carved oak door.
+- go north => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+2. go north
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- examine brass key
+- examine carved oak door
+- go south
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 9
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a brass key.
+Last result: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Score: 0
+Moves: 8
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- take brass key from writing desk => world changed: You take the brass key from the writing desk.
+- go east => location changed: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+- unlock carved oak door with brass key => world changed: You unlock carved oak door.
+- open carved oak door => world changed: You open carved oak door.
+- go north => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. open glass cabinet
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- drop brass key
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- go west
+- inventory
+- look
+- put brass key on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 10
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a brass key.
+Last result: You open the glass cabinet, revealing a silver key.
+Score: 0
+Moves: 9
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go east => location changed: -= Great Hall =-
+A vaulted hall watched by dusty portraits. A ceremonial plinth stands beneath a cracked glass dome.
+- unlock carved oak door with brass key => world changed: You unlock carved oak door.
+- open carved oak door => world changed: You open carved oak door.
+- go north => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- open glass cabinet => world changed: You open the glass cabinet, revealing a silver key.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. take silver key from glass cabinet
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- go west
+- insert brass key into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 11
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a silver key and a brass key.
+Last result: You take the silver key from the glass cabinet.
+Score: 0
+Moves: 10
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- unlock carved oak door with brass key => world changed: You unlock carved oak door.
+- open carved oak door => world changed: You open carved oak door.
+- go north => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- open glass cabinet => world changed: You open the glass cabinet, revealing a silver key.
+- take silver key from glass cabinet => world changed: You take the silver key from the glass cabinet.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- drop silver key
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- insert brass key into glass cabinet
+- insert silver key into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- put silver key on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 12
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a silver key and a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 11
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- open carved oak door => world changed: You open carved oak door.
+- go north => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- open glass cabinet => world changed: You open the glass cabinet, revealing a silver key.
+- take silver key from glass cabinet => world changed: You take the silver key from the glass cabinet.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go north
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- drop silver key
+- examine brass key
+- examine carved oak door
+- examine silver key
+- go east
+- go south
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 13
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Overgrown Courtyard
+Description: -= Overgrown Courtyard =-
+Moonlit ivy has swallowed the old fountain. The manor's tall windows look down on the weeds.
+Inventory: You are carrying: a silver key and a brass key.
+Last result: -= Overgrown Courtyard =-
+Moonlit ivy has swallowed the old fountain. The manor's tall windows look down on the weeds.
+Score: 0
+Moves: 12
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go north => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- open glass cabinet => world changed: You open the glass cabinet, revealing a silver key.
+- take silver key from glass cabinet => world changed: You take the silver key from the glass cabinet.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go north => location changed: -= Overgrown Courtyard =-
+Moonlit ivy has swallowed the old fountain. The manor's tall windows look down on the weeds.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. take stone raven from ivy-covered fountain
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- drop brass key
+- drop silver key
+- examine brass key
+- examine ivy-covered fountain
+- examine silver key
+- examine stone raven
+- go south
+- inventory
+- look
+- put brass key on ivy-covered fountain
+- put silver key on ivy-covered fountain
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 14
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Overgrown Courtyard
+Description: -= Overgrown Courtyard =-
+Moonlit ivy has swallowed the old fountain. The manor's tall windows look down on the weeds.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: You take the stone raven from the ivy-covered fountain.
+Score: 0
+Moves: 13
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- open glass cabinet => world changed: You open the glass cabinet, revealing a silver key.
+- take silver key from glass cabinet => world changed: You take the silver key from the glass cabinet.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go north => location changed: -= Overgrown Courtyard =-
+Moonlit ivy has swallowed the old fountain. The manor's tall windows look down on the weeds.
+- take stone raven from ivy-covered fountain => world changed: You take the stone raven from the ivy-covered fountain.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go south
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine ivy-covered fountain
+- examine silver key
+- examine stone raven
+- inventory
+- look
+- put brass key on ivy-covered fountain
+- put silver key on ivy-covered fountain
+- put stone raven on ivy-covered fountain
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 15
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 14
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- open glass cabinet => world changed: You open the glass cabinet, revealing a silver key.
+- take silver key from glass cabinet => world changed: You take the silver key from the glass cabinet.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go north => location changed: -= Overgrown Courtyard =-
+Moonlit ivy has swallowed the old fountain. The manor's tall windows look down on the weeds.
+- take stone raven from ivy-covered fountain => world changed: You take the stone raven from the ivy-covered fountain.
+- go south => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+2. go north
+3. go south
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine carved oak door
+- examine silver key
+- examine stone raven
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 16
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Score: 0
+Moves: 15
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- take silver key from glass cabinet => world changed: You take the silver key from the glass cabinet.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go north => location changed: -= Overgrown Courtyard =-
+Moonlit ivy has swallowed the old fountain. The manor's tall windows look down on the weeds.
+- take stone raven from ivy-covered fountain => world changed: You take the stone raven from the ivy-covered fountain.
+- go south => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- examine stone raven
+- insert brass key into glass cabinet
+- insert silver key into glass cabinet
+- insert stone raven into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- put silver key on brass telescope
+- put stone raven on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 17
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 16
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go north => location changed: -= Overgrown Courtyard =-
+Moonlit ivy has swallowed the old fountain. The manor's tall windows look down on the weeds.
+- take stone raven from ivy-covered fountain => world changed: You take the stone raven from the ivy-covered fountain.
+- go south => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+2. go north
+3. go south
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine carved oak door
+- examine silver key
+- examine stone raven
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 18
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Score: 0
+Moves: 17
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go north => location changed: -= Overgrown Courtyard =-
+Moonlit ivy has swallowed the old fountain. The manor's tall windows look down on the weeds.
+- take stone raven from ivy-covered fountain => world changed: You take the stone raven from the ivy-covered fountain.
+- go south => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- examine stone raven
+- insert brass key into glass cabinet
+- insert silver key into glass cabinet
+- insert stone raven into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- put silver key on brass telescope
+- put stone raven on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 19
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 18
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- take stone raven from ivy-covered fountain => world changed: You take the stone raven from the ivy-covered fountain.
+- go south => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+2. go north
+3. go south
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine carved oak door
+- examine silver key
+- examine stone raven
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 20
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Score: 0
+Moves: 19
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go south => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- examine stone raven
+- insert brass key into glass cabinet
+- insert silver key into glass cabinet
+- insert stone raven into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- put silver key on brass telescope
+- put stone raven on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 21
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 20
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+2. go north
+3. go south
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine carved oak door
+- examine silver key
+- examine stone raven
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 22
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Score: 0
+Moves: 21
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- examine stone raven
+- insert brass key into glass cabinet
+- insert silver key into glass cabinet
+- insert stone raven into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- put silver key on brass telescope
+- put stone raven on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 23
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 22
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+2. go north
+3. go south
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine carved oak door
+- examine silver key
+- examine stone raven
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 24
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Score: 0
+Moves: 23
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- examine stone raven
+- insert brass key into glass cabinet
+- insert silver key into glass cabinet
+- insert stone raven into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- put silver key on brass telescope
+- put stone raven on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 25
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 24
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+2. go north
+3. go south
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine carved oak door
+- examine silver key
+- examine stone raven
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 26
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Score: 0
+Moves: 25
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- examine stone raven
+- insert brass key into glass cabinet
+- insert silver key into glass cabinet
+- insert stone raven into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- put silver key on brass telescope
+- put stone raven on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 27
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 26
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+2. go north
+3. go south
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine carved oak door
+- examine silver key
+- examine stone raven
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 28
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Score: 0
+Moves: 27
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- examine stone raven
+- insert brass key into glass cabinet
+- insert silver key into glass cabinet
+- insert stone raven into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- put silver key on brass telescope
+- put stone raven on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 29
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Launderette
+Description: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+Score: 0
+Moves: 28
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go east
+2. go north
+3. go south
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close carved oak door
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine carved oak door
+- examine silver key
+- examine stone raven
+- inventory
+- look
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
+
+
+================================================================================
+MODEL PROMPT 30
+================================================================================
+
+You control a TextWorld agent. Choose the smartest next action.
+
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
+
+OBJECTIVE:
+The manor's sunstone was sealed away generations ago. Recover it from the hidden vault and return it to the ceremonial plinth in the Great Hall. Search carefully: the manor's locks form a chain, and each key brings you closer to the vault.
+
+CURRENT STATE:
+Location: Astronomer'S Study
+Description: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Inventory: You are carrying: a stone raven, a silver key and a brass key.
+Last result: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+Score: 0
+Moves: 29
+
+VERIFIED MEMORY:
+Visited: Astronomer'S Study, Great Hall, Launderette, Library, Overgrown Courtyard
+
+Known routes:
+- Astronomer'S Study --go west--> Launderette
+- Great Hall --go north--> Launderette
+- Great Hall --go west--> Library
+- Launderette --go east--> Astronomer'S Study
+- Launderette --go north--> Overgrown Courtyard
+- Launderette --go south--> Great Hall
+- Library --go east--> Great Hall
+- Overgrown Courtyard --go south--> Launderette
+
+Observed findings (the text after => is the complete evidence):
+- None
+
+Recent verified outcomes:
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+- go west => location changed: -= Launderette =-
+Generations of stern manor residents stare from tarnished frames. A narrow passage continues toward the east wing.
+- go east => location changed: -= Astronomer'S Study =-
+Star charts cover the walls. A glass cabinet glitters beside a brass telescope aimed at the ceiling.
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+1. go west
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+- close glass cabinet
+- drop brass key
+- drop silver key
+- drop stone raven
+- examine brass key
+- examine brass telescope
+- examine glass cabinet
+- examine rolled star chart
+- examine silver key
+- examine stone raven
+- insert brass key into glass cabinet
+- insert silver key into glass cabinet
+- insert stone raven into glass cabinet
+- inventory
+- look
+- put brass key on brass telescope
+- put silver key on brass telescope
+- put stone raven on brass telescope
+- take rolled star chart from brass telescope
+
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
+
