@@ -1,43 +1,87 @@
-SYSTEM_PROMPT = """
-You are an autonomous agent playing a TextWorld text adventure.
+try:
+    from .environment import GameState
+    from .memory import WorldMemory
+except ImportError:
+    from environment import GameState
+    from memory import WorldMemory
 
-Your goal is to complete the objective.
 
-You will receive:
-- the objective
-- your current location and room description
-- the result of your last action
-- your inventory
-- your recent action history
-- your current subgoal
-- the commands currently available
+def build_decision_prompt(
+    state: GameState,
+    memory: WorldMemory,
+    correction: str | None = None,
+) -> str:
+    candidates = memory.candidate_actions(state)
+    candidate_text = "\n".join(
+        f"{index}. {command}"
+        for index, command in enumerate(candidates, start=1)
+    ) or "None"
 
-Follow this ReAct process before choosing an action:
-1. Assess the latest observation and whether the previous subgoal succeeded.
-2. Add only directly observed facts to memory. Never store guesses as facts.
-3. Create or maintain one short, useful subgoal that moves toward the objective.
-4. Define a concrete, observable success condition for that subgoal.
-5. Choose one available action that best advances the subgoal.
+    visited = ", ".join(sorted(memory.visited_locations)) or "None"
+    routes = "\n".join(
+        f"- {origin} --{command}--> {destination} "
+        f"(used {memory.route_traversals[(origin, command)]} times; "
+        f"destination visited {memory.location_visits[destination]} times)"
+        for (origin, command), destination in sorted(memory.routes.items())
+    ) or "- None"
+    findings = "\n".join(
+        f"- In {location}, {command} => {result}"
+        for (location, command), result in sorted(memory.findings.items())
+    ) or "- None"
+    recent = "\n".join(
+        f"- {record.command} => {record.outcome.value}: {record.result}"
+        for record in memory.history[-6:]
+    ) or "- None"
+    rejected = "\n".join(
+        f"- {command}" for command in memory.rejected_actions(state)
+    ) or "- None"
+    correction_text = (
+        f"\nPREVIOUS RESPONSE REJECTED:\n{correction}\n"
+        if correction
+        else ""
+    )
 
-The subgoal should be achievable within a few actions.
-Keep the current subgoal if it is still useful.
-Change it only when it is completed, impossible, or no longer making progress.
+    return f"""You control a TextWorld agent. Choose the smartest next action.
 
-Choose exactly ONE action from the available commands that advances the subgoal.
+Use only verified evidence below. Never call an unreadable, empty, or
+uninformative result a clue. Never claim an item was found unless the state or
+feedback explicitly says so. Choose one exact candidate action. Prefer acquiring
+visible useful items, unlocking/opening relevant objects, and unexplored routes.
+Avoid undoing useful progress or storing carried items unless the objective
+explicitly requires that placement.
 
-Use the recent history to avoid loops.
-Do not repeat an action that already made no progress in the same situation.
-If you are stuck, explore a different room or interact with a different object.
-Do not put down or store useful items unless the objective or subgoal requires it.
+OBJECTIVE:
+{state.objective}
 
-Do not explain your reasoning.
-Return only a JSON object containing:
-- "assessment": a concise interpretation of the latest observation
-- "subgoal_status": continue, complete, blocked, or replace
-- "subgoal": the current short-term goal
-- "success_condition": observable evidence that the subgoal is complete
-- "memory_update": a list of new directly observed facts, or an empty list
-- "action": exactly one available command
+CURRENT STATE:
+Location: {state.location}
+Description: {state.description}
+Inventory: {state.inventory}
+Last result: {state.feedback}
+Score: {state.score}
+Moves: {state.moves}
 
-The action must appear exactly as written in the available commands.
+VERIFIED MEMORY:
+Visited: {visited}
+
+Known routes:
+{routes}
+
+Observed findings (the text after => is the complete evidence):
+{findings}
+
+Recent verified outcomes:
+{recent}
+
+CANDIDATE ACTIONS (highest-priority actions for this move):
+{candidate_text}
+
+NOT OFFERED THIS MOVE (lower priority, exhausted, cyclic, or regressive):
+{rejected}
+{correction_text}
+Return exactly one JSON object:
+- "goal": one small outcome this action should accomplish
+- "action": exactly one candidate action
+- "reason": cite only current state or verified memory explaining why this is
+  better than the other candidates
 """

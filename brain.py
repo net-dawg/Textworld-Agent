@@ -1,14 +1,74 @@
 import json
+from collections.abc import Callable
+from dataclasses import dataclass
 
 import requests
 
+try:
+    from .environment import GameState
+    from .memory import WorldMemory
+    from .prompts import build_decision_prompt
+except ImportError:
+    from environment import GameState
+    from memory import WorldMemory
+    from prompts import build_decision_prompt
+
+
+@dataclass(frozen=True)
+class Decision:
+    goal: str
+    action: str
+    reason: str
+
 
 class OllamaBrain:
-    def __init__(self, model="qwen3:8b"):
-        self.model = model
-        self.url = "http://127.0.0.1:11434/api/generate"
+    """One model call chooses one grounded micro-plan and action."""
 
-    def generate(self, prompt):
+    def __init__(
+        self,
+        model: str = "qwen3:8b",
+        url: str = "http://127.0.0.1:11434/api/generate",
+        timeout: int = 120,
+        prompt_callback: Callable[[str], None] | None = None,
+    ):
+        self.model = model
+        self.url = url
+        self.timeout = timeout
+        self.prompt_callback = prompt_callback
+
+    def set_prompt_callback(
+        self,
+        callback: Callable[[str], None] | None,
+    ) -> None:
+        self.prompt_callback = callback
+
+    def decide(
+        self,
+        state: GameState,
+        memory: WorldMemory,
+        correction: str | None = None,
+    ) -> Decision:
+        candidates = memory.candidate_actions(state)
+        prompt = build_decision_prompt(state, memory, correction)
+        if self.prompt_callback:
+            self.prompt_callback(prompt)
+        data = self._generate(prompt)
+
+        decision = Decision(
+            goal=data.get("goal", "").strip(),
+            action=data.get("action", "").strip(),
+            reason=data.get("reason", "").strip(),
+        )
+        if not decision.goal or not decision.action or not decision.reason:
+            raise ValueError("Model returned an incomplete decision.")
+        if decision.action not in candidates:
+            raise ValueError(
+                f"Action is not a candidate: {decision.action}. "
+                f"Candidates: {list(candidates)}"
+            )
+        return decision
+
+    def _generate(self, prompt: str) -> dict:
         response = requests.post(
             self.url,
             json={
@@ -19,55 +79,15 @@ class OllamaBrain:
                 "format": {
                     "type": "object",
                     "properties": {
-                        "assessment": {"type": "string"},
-                        "subgoal_status": {
-                            "type": "string",
-                            "enum": ["continue", "complete", "blocked", "replace"],
-                        },
-                        "subgoal": {"type": "string"},
-                        "success_condition": {"type": "string"},
-                        "memory_update": {
-                            "type": "array",
-                            "items": {"type": "string"},
-                        },
+                        "goal": {"type": "string"},
                         "action": {"type": "string"},
+                        "reason": {"type": "string"},
                     },
-                    "required": [
-                        "assessment",
-                        "subgoal_status",
-                        "subgoal",
-                        "success_condition",
-                        "memory_update",
-                        "action",
-                    ],
+                    "required": ["goal", "action", "reason"],
                     "additionalProperties": False,
                 },
             },
-            timeout=120,
+            timeout=self.timeout,
         )
-
         response.raise_for_status()
-
-        data = response.json()
-        decision = json.loads(data["response"])
-
-        text_fields = ["assessment", "subgoal", "success_condition", "action"]
-
-        for field in text_fields:
-            decision[field] = decision.get(field, "").strip()
-
-        if any(not decision[field] for field in text_fields):
-            raise ValueError("Model returned an incomplete ReAct decision.")
-
-        return {
-            "assessment": decision["assessment"],
-            "subgoal_status": decision["subgoal_status"],
-            "subgoal": decision["subgoal"],
-            "success_condition": decision["success_condition"],
-            "memory_update": [
-                fact.strip()
-                for fact in decision.get("memory_update", [])
-                if fact.strip()
-            ],
-            "action": decision["action"],
-        }
+        return json.loads(response.json()["response"])

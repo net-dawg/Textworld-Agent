@@ -1,12 +1,48 @@
 import re
+from dataclasses import dataclass
+from pathlib import Path
+
 import textworld
 
 
-class TextWorldEnvironment:
-    def __init__(self, game_file):
-        self.game_file = game_file
+@dataclass(frozen=True)
+class GameState:
+    """Authoritative information reported by TextWorld for the current turn."""
 
-        self.request_infos = textworld.EnvInfos(
+    objective: str
+    location: str | None
+    description: str
+    feedback: str
+    inventory: str
+    admissible_commands: tuple[str, ...]
+    score: int
+    moves: int
+    won: bool
+    lost: bool
+
+
+@dataclass(frozen=True)
+class StepResult:
+    """The new game state plus the outcome of the executed command."""
+
+    state: GameState
+    reward: int
+    done: bool
+
+
+class TextWorldEnvironment:
+    """Runs TextWorld and converts its raw state into a clean snapshot."""
+
+    def __init__(self, game_file: str | Path):
+        self.game_file = Path(game_file)
+        self._environment = None
+        self._state = None
+
+    def start(self) -> None:
+        if self._environment is not None:
+            return
+
+        requested_information = textworld.EnvInfos(
             description=True,
             inventory=True,
             objective=True,
@@ -17,66 +53,66 @@ class TextWorldEnvironment:
             lost=True,
         )
 
-        self.env = textworld.start(
-            self.game_file,
-            request_infos=self.request_infos,
+        self._environment = textworld.start(
+            str(self.game_file),
+            request_infos=requested_information,
         )
 
-        self.state = None
+    def reset(self) -> GameState:
+        self.start()
+        self._state = self._environment.reset()
+        return self._snapshot(self._state)
 
-    def reset(self):
-        self.state = self.env.reset()
-        return self.state
+    def step(self, command: str) -> StepResult:
+        if self._environment is None or self._state is None:
+            raise RuntimeError("Reset the environment before taking an action.")
 
-    def step(self, command):
-        self.state, reward, done = self.env.step(command)
-        return self.state, reward, done
+        if command not in self._state.admissible_commands:
+            raise ValueError(f"Command is not currently admissible: {command}")
 
-    def get_location(self, state=None):
-        state = state or self.state
+        self._state, reward, done = self._environment.step(command)
 
-        if not state:
-            return None
+        return StepResult(
+            state=self._snapshot(self._state),
+            reward=reward,
+            done=done,
+        )
 
-        match = re.search(r"-=\s*(.*?)\s*=-", state.description)
+    def close(self) -> None:
+        if self._environment is not None:
+            self._environment.close()
 
-        if match:
-            return match.group(1)
+        self._environment = None
+        self._state = None
 
-        return None
+    def _snapshot(self, state) -> GameState:
+        return GameState(
+            objective=state.objective.strip(),
+            location=self._extract_location(state.description),
+            description=state.description.strip(),
+            feedback=self._clean_feedback(state.feedback, state.moves),
+            inventory=state.inventory.strip(),
+            admissible_commands=tuple(sorted(state.admissible_commands)),
+            score=state.score,
+            moves=state.moves,
+            won=state.won,
+            lost=state.lost,
+        )
 
-    def get_context(self, state=None):
-        state = state or self.state
+    @staticmethod
+    def _extract_location(description: str) -> str | None:
+        match = re.search(r"-=\s*(.*?)\s*=-", description)
+        return match.group(1) if match else None
 
-        return {
-            "location": self.get_location(state),
-            "description": state.description,
-            "feedback": self.get_action_result(state),
-            "inventory": state.inventory,
-            "score": state.score,
-            "moves": state.moves,
-        }
-
-    def get_action_result(self, state=None):
-        state = state or self.state
-
-        if state.moves == 0:
+    @staticmethod
+    def _clean_feedback(feedback: str, moves: int) -> str:
+        if moves == 0:
             return "No action has been taken yet."
 
-        # TextWorld appends its parser prompt and status line to feedback.
-        # They are terminal UI, not useful context for the model.
-        feedback = re.sub(r"\n>\s*-=.*$", "", state.feedback, flags=re.DOTALL)
-        return feedback.strip()
-
-    def state_signature(self, state=None):
-        state = state or self.state
-
-        return (
-            self.get_location(state),
-            state.inventory,
-            state.score,
-            tuple(sorted(state.admissible_commands)),
+        cleaned = re.sub(
+            r"\n>\s*-=.*$",
+            "",
+            feedback,
+            flags=re.DOTALL,
         )
-
-    def close(self):
-        self.env.close()
+        return cleaned.strip()
