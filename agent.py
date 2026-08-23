@@ -1,4 +1,5 @@
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -18,7 +19,7 @@ class Agent:
         self.max_steps = max_steps
         self.history_limit = history_limit
         self.history = []
-        self.blocked_actions = set()
+        self.failed_actions = {}
         self.current_subgoal = None
         self.current_success_condition = None
         self.visited_locations = set()
@@ -119,6 +120,94 @@ COMPLETED MILESTONES:
 OBSERVED FACTS:
 {facts}"""
 
+    def format_failed_actions(self, location):
+        failures = [
+            failure
+            for (failure_location, _), failure in self.failed_actions.items()
+            if failure_location == location
+        ]
+
+        if not failures:
+            return "- None."
+
+        return "\n".join(
+            f"- Do not retry '{failure['action']}' yet. "
+            f"It failed because: {failure['reason']} "
+            f"Retry condition: {failure['retry_condition']}"
+            for failure in failures
+        )
+
+    def get_action_target(self, action):
+        for prefix in ("open ", "close ", "examine ", "drop "):
+            if action.startswith(prefix):
+                return action[len(prefix):]
+
+        if action.startswith(("unlock ", "lock ")):
+            return action.split(" with ", 1)[0].split(" ", 1)[1]
+
+        if action.startswith("take "):
+            return action[len("take "):].split(" from ", 1)[0]
+
+        if action.startswith("insert "):
+            return action.split(" into ", 1)[-1]
+
+        if action.startswith("put "):
+            return action.split(" on ", 1)[-1]
+
+        return None
+
+    def remember_failed_action(self, location, action, result):
+        action_target = self.get_action_target(action)
+        dependency_target = action_target
+        retry_condition = "A directly relevant condition must change."
+
+        locked_match = re.search(
+            r"unlock the (.*?) with",
+            result,
+            flags=re.IGNORECASE,
+        )
+        closed_match = re.search(
+            r"open the (.*?) first",
+            result,
+            flags=re.IGNORECASE,
+        )
+
+        if locked_match:
+            dependency_target = locked_match.group(1).strip(" .")
+            retry_condition = f"Successfully unlock {dependency_target}."
+        elif closed_match:
+            dependency_target = closed_match.group(1).strip(" .")
+            retry_condition = f"Successfully open {dependency_target}."
+        elif action_target:
+            retry_condition = (
+                f"A successful action must change {action_target}."
+            )
+
+        self.failed_actions[(location, action)] = {
+            "action": action,
+            "reason": result,
+            "dependency_target": dependency_target,
+            "retry_condition": retry_condition,
+        }
+
+    def resolve_failed_actions(self, action, made_progress):
+        if not made_progress:
+            return
+
+        changed_target = self.get_action_target(action)
+
+        if not changed_target:
+            return
+
+        resolved = [
+            key
+            for key, failure in self.failed_actions.items()
+            if failure["dependency_target"] == changed_target
+        ]
+
+        for key in resolved:
+            del self.failed_actions[key]
+
     def update_world_memory(
         self,
         previous_location,
@@ -147,10 +236,12 @@ OBSERVED FACTS:
                 self.world_facts.append(fact)
 
     def get_candidate_commands(self, state):
+        location = self.environment.get_location(state)
+
         return [
             command
             for command in state.admissible_commands
-            if command not in self.blocked_actions
+            if (location, command) not in self.failed_actions
         ]
 
     def build_prompt(self, state, candidate_commands=None):
@@ -188,6 +279,9 @@ RECENT HISTORY:
 WORLD MEMORY:
 {self.format_world_memory()}
 
+FAILED ACTIONS IN THIS LOCATION:
+{self.format_failed_actions(context['location'])}
+
 CURRENT PLAN:
 Subgoal:
 {self.current_subgoal or "No subgoal yet. Create the first useful subgoal."}
@@ -205,7 +299,7 @@ DECISION:
 
     def run(self):
         self.history = []
-        self.blocked_actions = set()
+        self.failed_actions = {}
         self.current_subgoal = None
         self.current_success_condition = None
         self.visited_locations = set()
@@ -289,10 +383,16 @@ DECISION:
                 memory_update=decision["memory_update"],
             )
 
+            action_result = self.environment.get_action_result(state)
+
             if made_progress:
-                self.blocked_actions.clear()
+                self.resolve_failed_actions(action, made_progress=True)
             else:
-                self.blocked_actions.add(action)
+                self.remember_failed_action(
+                    previous_location,
+                    action,
+                    action_result,
+                )
 
             print("\nTEXTWORLD RESPONSE:")
             print(state.feedback)
